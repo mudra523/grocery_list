@@ -15,16 +15,12 @@ function App() {
           <Routes>
             <Route index path="/" element={<HomePage />} />
             <Route index path="/cart" element={<Cart />} />
-            {/* <Route path="/register" element={<Register />} /> */}
             <Route
               path="/homepage"
               element={
-                // <RequireAuth>
                   <HomePage />
-                // </RequireAuth>
               }
             />
-            {/* <Route path="*" element={<PageNotFound />} /> */}
           </Routes>
         </BrowserRouter>
     </div>
