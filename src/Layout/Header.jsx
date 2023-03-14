@@ -4,18 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 const { Item } = Menu;
 function Header() {
   const [path, setPath] = useState("/");
-
-//   const auth = useAuth();
   const navigate = useNavigate();
-//   const dispatch = useDispatch();
 
   useEffect(() => {
     setPath(window.location.pathname);
   }, []);
 
   const handleLogout = async () => {
-    // dispatch(remove());
-    // auth.logout();
     navigate("/");
   };
 
@@ -45,8 +40,8 @@ function Header() {
           className="header"
         >
             <>
-              <Item className="menuitemparent" key="/dashboard">
-                <Link className="menuitem" to="/dashboard">
+              <Item className="menuitemparent" key="/homepage">
+                <Link className="menuitem" to="/homepage">
                   Home Page
                 </Link>
               </Item>
@@ -65,8 +60,8 @@ function Header() {
           className="header"
         >
             <>
-              <Item className="menuitemparent" key="/dashboard">
-                <Link className="menuitem" to="/dashboard">
+              <Item className="menuitemparent" key="/cart">
+                <Link className="menuitem" to="/cart">
                   Cart
                 </Link>
               </Item>
