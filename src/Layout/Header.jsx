@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Badge, Button, Menu } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import { LoginOutlined, LogoutOutlined } from "@ant-design/icons";
-// import { getRequest } from "../api";
-// import { useAuth } from "../components/Auth";
-// import { useDispatch } from "react-redux";
-// import { remove } from "../features/authTokenSlice";
-
 const { Item } = Menu;
 function Header() {
   const [path, setPath] = useState("/");
