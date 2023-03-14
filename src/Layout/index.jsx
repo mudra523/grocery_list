@@ -2,7 +2,6 @@ import { Layout } from "antd";
 import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-// import "./index.scss";
 const { Content } = Layout;
 
 function index(props) {
