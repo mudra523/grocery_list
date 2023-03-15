@@ -10,27 +10,21 @@ const { Text } = Typography;
 
 function HomePage() {
   const [data, setArray] = useState([]);
-  console.log(data)
-
   const parentToChild = (newValue) => {
-    console.log(newValue.id, data)
     newValue.count = 1
     var curId = newValue.id;
     var flag = 0;
     var objIndex = data.findIndex((data => data.id == curId));
     if (objIndex != -1) {
       flag = 1
-      console.log("index found", objIndex)
-      console.log("Before update: ", data[objIndex])
       data[objIndex].count += 1
-      console.log("After update: ", data[objIndex])
-      setArray((array) => [...array])
+      setArray(data)
     }
     if (flag == 0) {
       setArray((array) => [...array, newValue])
     }
   }
-
+  
   return (
     <>
       <Layout>
