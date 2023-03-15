@@ -1,59 +1,31 @@
 import React from "react";
-import {
-  Col,
-  Row,
-} from "antd";
-import Layout from "../../Layout/index"
-import { Avatar, Card } from 'antd';
-import { eventsData } from "./data";
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Button, Col, Row } from "antd";
+import Layout from "../../Layout/index";
+import { Avatar, Card, Typography, Image} from "antd";
+import { groceryData } from "./data";
+
 const { Meta } = Card;
+const { Text } = Typography;
+
 function homepage() {
-
-  const homepage = eventsData.map(event => (
-    <Card
-      hoverable
-      style={{
-        width: 240,
-      }}
-      cover={<img alt="example" src={event.image} />}
-    >
-      <Meta title={event.title} description={event.description} />
-    </Card>
-
-  ));
   return (
     <>
       <Layout>
-        <Row gutter={16} push={2}>
-          <Col  >
-            {homepage}
-          </Col>
+        <Row style={{ marginTop: "2em" }} justify="center" gutter={32}>
+          {groceryData.map((groce) => (
+            <Col span={6}>
+              <Card hoverable style={{ marginTop: "2em" }}>
+                <Image alt="example" src={groce.image} preview={false} style={{ height: "200px", width:"auto"}}/>
+                <Meta title={groce.title} description={groce.description} />
+                <Text>Price {groce.price}</Text>
+                <Button>Add Iteam</Button>
+              </Card>
+            </Col>
+          ))}
         </Row>
       </Layout>
     </>
-  )
+  );
 }
 
-
 export default homepage;
-
-// export default function homepage() {
-//   const homepage = eventsData.map(event => (
-//               <Card
-//                hoverable
-//                style={{
-//                  width: 240,
-//                }}
-//                cover={<img alt="example" src={event.image} />}
-//              >
-//                <Meta title={event.title} description={event.description} />
-//              </Card>
-
-//   ));
-
-//   return <div>{homepage}</div>;
-// }
-
-
-
