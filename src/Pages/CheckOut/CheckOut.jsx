@@ -1,22 +1,22 @@
 import React from "react";
 import {
-    Col,
-    Row,
-  } from "antd";
-  import Layout from "../../Layout/index"
-  function Cart() {
-    return(
-      <>
+  Col,
+  Row,
+} from "antd";
+import Layout from "../../Layout/index"
+function Cart() {
+  return (
+    <>
       <Layout>
         <Row>
-            <Col>
-            
-            </Col>
+          <Col>
+
+          </Col>
         </Row>
       </Layout>
-      </>
+    </>
 
-    );
+  );
 
-  }
-  export default Cart;
+}
+export default Cart;

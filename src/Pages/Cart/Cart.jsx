@@ -5,27 +5,12 @@ import {
 } from "antd";
 import { Radio } from 'antd';
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
 import { Card } from 'antd';
 import { Image } from 'antd';
 import { Button } from 'antd';
 import Layout from "../../Layout/index"
-import { CaretUpOutlined } from '@ant-design/icons';
 import { useLocation } from "react-router-dom";
-const optionsWithDisabled = [
-  {
-    label: '+',
-    value: 1,
-  },
-  {
-    label: '1',
-    value: '1',
-  },
-  {
-    label: '-',
-    value: -1,
-  },
-];
+
 
 function Cart(props) {
   const onChange4 = ({ target: { value } }) => {
