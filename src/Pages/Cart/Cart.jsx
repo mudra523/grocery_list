@@ -10,61 +10,74 @@ import { Card } from 'antd';
 import { Image } from 'antd';
 import { Button } from 'antd';
 import Layout from "../../Layout/index"
-import { CaretUpOutlined } from '@ant-design/icons';
 import { useLocation } from "react-router-dom";
-const optionsWithDisabled = [
-  {
-    label: '+',
-    value: 1,
-  },
-  {
-    label: '1',
-    value: '1',
-  },
-  {
-    label: '-',
-    value: -1,
-  },
-];
+
 
 function Cart(props) {
   const onChange4 = ({ target: { value } }) => {
-    console.log('radio4 checked', value);
     setValue4(value);
   };
   const location = useLocation();
-  console.log(props, " props");
-  console.log(location, " useLocation Hook");
   const [list, setList] = useState([]);
   const [value4, setValue4] = useState('Apple');
+  const [total, setTotal] = useState();
+  const optionsWithDisabled = [
+    {
+      label: '+',
+      value: 1,
+    },
+    {
+      label: '1',
+      value: '1',
+    },
+    {
+      label: '-',
+      value: -1,
+    },
+  ];
 
- 
-  useEffect(()=>{
+
+  useEffect(() => {
     const listData = location.state?.data;
-    setList(listData)
-  },[location.state?.data])
+    var temp = 0;
+    for (var i = 0; i < listData.length; i++) {
 
+      temp = temp + (listData[i].price * listData[i].count)
+    }
+    setTotal(temp)
+    console.log(total)
+    setList(listData)
+  }, [location.state?.data])
+
+  function deleteElement(deleteItem) {
+    console.log("item to be deleted", deleteItem);
+
+    var arr = list.filter(function (list) {
+
+      return list.id !== deleteItem.id
+    })
+    setList(arr)
+  }
   console.log(location?.state?.data, " listData");
   return (
     <>
       <Layout>
-
         <Row>
-          {list.map((list) => (
+          {list.map((item) => (
             <Col span={18}>
               <Card style={{ width: 1500 }}>
                 <Row>
                   <Col span={6}>
                     <Image
                       width={200}
-                      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                      src={item.image}
                     />
 
                   </Col>
                   <Col span={18}>
                     <Row>
                       <Col span={12}>
-                        Name :
+                        {list.title}
                       </Col>
                     </Row>
                     <Row>
@@ -72,7 +85,7 @@ function Cart(props) {
                         <Radio.Group
                           options={optionsWithDisabled}
                           onChange={onChange4}
-                          value={value4}
+                          value={item.count}
                           optionType="button"
                           buttonStyle="solid"
                         />
@@ -80,12 +93,12 @@ function Cart(props) {
                     </Row>
                     <Row>
                       <Col span={12}>
-                        price :
+                        {item.price}
                       </Col>
                     </Row>
                     <Row>
                       <Col span={12}>
-                        <Button type="primary" danger>
+                        <Button type="primary" danger onClick={() => deleteElement(item)}>
                           Delete
                         </Button>
                       </Col>
@@ -98,7 +111,21 @@ function Cart(props) {
           ))}
           <Col span={6}>
             <Card>
-              <Row></Row>
+              <Row>
+                <Col>
+                  Total
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  {total}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Button type="primary">Pay Amount</Button>
+                </Col>
+              </Row>
             </Card>
           </Col>
         </Row>
