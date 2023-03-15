@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Row } from "antd";
 import Layout from "../../Layout/index";
-import { Avatar, Card, Typography, Image} from "antd";
+import { Card, Typography, Image} from "antd";
 import { groceryData } from "./data";
-
+import Cart from "../Cart/Cart";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 const { Text } = Typography;
 
-function homepage() {
+function HomePage() {
+  const [data, setArray] = useState([]);
+  // console.log(data)
+  const parentToChild = (newValue) => {
+    console.log(newValue)
+    setArray((array) => [...array, newValue]);
+    
+  }
   return (
     <>
       <Layout>
@@ -18,14 +26,18 @@ function homepage() {
                 <Image alt="example" src={groce.image} preview={false} style={{ height: "200px", width:"auto"}}/>
                 <Meta title={groce.title} description={groce.description} />
                 <Text>Price {groce.price}</Text>
-                <Button>Add Iteam</Button>
+                <Button onClick={() => parentToChild(groce)}>Add Iteam</Button>
+                
               </Card>
             </Col>
           ))}
         </Row>
+        <Link to="/cart" state={{ data: data }} className="link">
+                  Apple
+        </Link>
       </Layout>
     </>
   );
 }
 
-export default homepage;
+export default HomePage;
