@@ -10,8 +10,22 @@ import { Card } from 'antd';
 import { Image } from 'antd';
 import { Button } from 'antd';
 import Layout from "../../Layout/index"
+import { CaretUpOutlined } from '@ant-design/icons';
 import { useLocation } from "react-router-dom";
-
+const optionsWithDisabled = [
+  {
+    label: '+',
+    value: 1,
+  },
+  {
+    label: '1',
+    value: '1',
+  },
+  {
+    label: '-',
+    value: -1,
+  },
+];
 
 function Cart(props) {
   const onChange4 = ({ target: { value } }) => {
@@ -77,7 +91,7 @@ function Cart(props) {
                   <Col span={18}>
                     <Row>
                       <Col span={12}>
-                        {list.title}
+                        {item.title}
                       </Col>
                     </Row>
                     <Row>
