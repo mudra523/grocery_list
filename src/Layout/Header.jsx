@@ -96,7 +96,7 @@ function Header() {
             GROCERY
           </Link>
         </Col>
-        <Col
+        {/* <Col
           className="app_menu_wrapper"
           style={{
             height: "full",
@@ -114,7 +114,7 @@ function Header() {
               <Link to="/cart">Cart</Link>
             </Menu.Item>
           </Menu>
-        </Col>
+        </Col> */}
       </Row>
     </>
   );

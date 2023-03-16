@@ -204,7 +204,7 @@ function ToDo() {
             </Button>
           </Col>
           <Col span={18}>
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={data} pagination={false}/>
           </Col>
         </Row>
 

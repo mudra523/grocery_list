@@ -14,13 +14,10 @@ function App() {
     <div className="App">
        <BrowserRouter>
           <Routes>
-            <Route index path="/" element={<HomePage />} />
-            <Route index path="/cart" element={<Cart/>} />
-            <Route index path="/todo" element={<ToDo/>} />
             <Route
-              path="/homepage"
+              path="/"
               element={
-                  <HomePage />
+                  <ToDo />
               }
             />
           </Routes>
