@@ -11,7 +11,7 @@ import {
   Button,
   Input,
   Card,
-  Popconfirm,
+  Select,
   Typography,
 } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -24,11 +24,6 @@ function ToDo() {
   const [currData, setCurrData] = useState([]);
   const [isAddVisible, setIsAddVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  const showPopconfirm = () => {
-    setOpen(true);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -130,7 +125,6 @@ function ToDo() {
       try {
         await fetch(url, { method: "DELETE" }).then((res) =>
           res.json().then(() => {
-            setOpen(false)
             window.location.reload();
           })
         );
@@ -176,15 +170,9 @@ function ToDo() {
           <Tooltip title="Edit Iteam">
             <EditOutlined onClick={() => editeModaleData(data)} />
           </Tooltip>
-          <Popconfirm
-            title="Title"
-            description="Are you sure you want to delete?"
-            open={open}
-            onConfirm={() => onDeleteIteam(data)}
-            onCancel={handleCancel}
-          >
-            <DeleteOutlined onClick={showPopconfirm}/>
-          </Popconfirm>
+          <Tooltip title="Delete Iteam">
+            <DeleteOutlined onClick={() => onDeleteIteam(data)} />
+          </Tooltip>
         </Space>
       ),
     },
@@ -204,7 +192,7 @@ function ToDo() {
             </Button>
           </Col>
           <Col span={18}>
-            <Table columns={columns} dataSource={data} pagination={false}/>
+            <Table columns={columns} dataSource={data} pagination={false} />
           </Col>
         </Row>
 
